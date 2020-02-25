@@ -1,0 +1,9 @@
+include: package:lint/analysis_options.yaml
+
+linter:
+  rules:
+    - prefer_if_elements_to_conditional_expressions
+    - prefer_if_null_operators
+
+analyzer:
+  errors:
