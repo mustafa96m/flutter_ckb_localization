@@ -7,30 +7,28 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 class _CkbMaterialLocalizationsDelegate
-		extends LocalizationsDelegate<WidgetsLocalizations> {
-	const _CkbMaterialLocalizationsDelegate();
+    extends LocalizationsDelegate<WidgetsLocalizations> {
+  const _CkbMaterialLocalizationsDelegate();
 
-	@override
-	bool isSupported(Locale locale) => locale.languageCode == 'ckb';
+  @override
+  bool isSupported(Locale locale) => locale.languageCode == 'ckb';
 
-	@override
-	Future<WidgetsLocalizations> load(Locale locale) async {
-		const String localeName = "ckb";
-		await intl.initializeDateFormatting(localeName, null);
-		return SynchronousFuture<WidgetsLocalizations>(
-			CkbWidgetLocalizations(),
-		);
-	}
+  @override
+  Future<WidgetsLocalizations> load(Locale locale) async {
+    const String localeName = "ckb";
+    await intl.initializeDateFormatting(localeName, null);
+    return SynchronousFuture<WidgetsLocalizations>(
+      CkbWidgetLocalizations(),
+    );
+  }
 
-	@override
-	bool shouldReload(_CkbMaterialLocalizationsDelegate old) => false;
+  @override
+  bool shouldReload(_CkbMaterialLocalizationsDelegate old) => false;
 }
 
 class CkbWidgetLocalizations extends WidgetsLocalizations {
-
-
-	static const LocalizationsDelegate<WidgetsLocalizations> delegate =
-	_CkbMaterialLocalizationsDelegate();
+  static const LocalizationsDelegate<WidgetsLocalizations> delegate =
+      _CkbMaterialLocalizationsDelegate();
 
   @override
   TextDirection get textDirection => TextDirection.rtl;
