@@ -47,7 +47,7 @@ class CkbMaterialLocalizations extends GlobalMaterialLocalizations {
           longDateFormat: longDateFormat,
           yearMonthFormat: yearMonthFormat,
           decimalFormat: decimalFormat,
-          twoDigitZeroPaddedFormat: twoDigitZeroPaddedFormat,
+          twoDigitZeroPaddedFormat: twoDigitZeroPaddedFormat
         );
 
   @override
@@ -241,4 +241,7 @@ class CkbMaterialLocalizations extends GlobalMaterialLocalizations {
 
   static const LocalizationsDelegate<MaterialLocalizations> delegate =
       _CkbMaterialLocalizationsDelegate();
+
+  @override
+  String get moreButtonTooltip => "More";
 }
