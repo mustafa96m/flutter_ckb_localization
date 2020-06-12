@@ -18,6 +18,9 @@ class _CkbMaterialLocalizationsDelegate
       CkbMaterialLocalizations(
         localeName: "ckb",
         fullYearFormat: intl.DateFormat('y'),
+        shortDateFormat: intl.DateFormat('MM/DD/YY'),
+        compactDateFormat: intl.DateFormat('EEE, MMM d'),
+        shortMonthDayFormat: intl.DateFormat('MM/DD'),
         mediumDateFormat: intl.DateFormat('EEE, MMM d'),
         longDateFormat: intl.DateFormat('EEEE, MMMM d, y'),
         yearMonthFormat: intl.DateFormat('MMMM y'),
@@ -35,6 +38,9 @@ class CkbMaterialLocalizations extends GlobalMaterialLocalizations {
   const CkbMaterialLocalizations({
     String localeName = 'ckb',
     @required intl.DateFormat fullYearFormat,
+    @required intl.DateFormat shortDateFormat,
+    @required intl.DateFormat compactDateFormat,
+    @required intl.DateFormat shortMonthDayFormat,
     @required intl.DateFormat mediumDateFormat,
     @required intl.DateFormat longDateFormat,
     @required intl.DateFormat yearMonthFormat,
@@ -42,6 +48,9 @@ class CkbMaterialLocalizations extends GlobalMaterialLocalizations {
     @required intl.NumberFormat twoDigitZeroPaddedFormat,
   }) : super(
           localeName: localeName,
+          shortDateFormat: shortDateFormat,
+          compactDateFormat: compactDateFormat,
+          shortMonthDayFormat: shortMonthDayFormat,
           fullYearFormat: fullYearFormat,
           mediumDateFormat: mediumDateFormat,
           longDateFormat: longDateFormat,
