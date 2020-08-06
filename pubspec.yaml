@@ -2,17 +2,18 @@ name: flutter_ckb_localization
 description: Flutter Central Kurdish Branch aka Sorani Localization Support
 version: 0.0.5
 homepage: https://github.com/mustafa96m/flutter_ckb_localization
-author: Mustafa Ahmed
+
 environment:
   sdk: ">=2.1.0 <3.0.0"
 
 dependencies:
   flutter:
     sdk: flutter
+  intl: any
   flutter_localizations:
     sdk: flutter
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
   lint: ^1.1.1
-
