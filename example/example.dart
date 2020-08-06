@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'CKB Example',
-      localizationsDelegates: [
+      localizationsDelegates: const [
         CkbWidgetLocalizations.delegate,
         CkbMaterialLocalizations.delegate
       ],

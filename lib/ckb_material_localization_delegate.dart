@@ -58,6 +58,8 @@ class CkbMaterialLocalizations extends GlobalMaterialLocalizations {
           decimalFormat: decimalFormat,
           twoDigitZeroPaddedFormat: twoDigitZeroPaddedFormat
         );
+  static const LocalizationsDelegate<MaterialLocalizations> delegate =
+  _CkbMaterialLocalizationsDelegate();
 
   @override
   String get aboutListTileTitleRaw => 'About \$applicationName';
