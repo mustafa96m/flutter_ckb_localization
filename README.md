@@ -15,17 +15,17 @@ Add these two delegates to *localizationsDelegates* array
 
 ```dart
 return MaterialApp(
-		localizationsDelegates: [
+	localizationsDelegates: [
 		..
 		CkbMaterialLocalizations.delegate,
 		CkbWidgetLocalizations.delegate,
 		...
-		],
-		supportedLocales: [ Locale('ckb') ]
-		locale: Locale('ckb')
+	],
+	supportedLocales: [ Locale('ckb') ]
+	ocale: Locale('ckb')
  )
 ```
 
 -----
-### Help Needed in Translations!
-Please do fork and PR.
+### Translations are available now!
+Thanks to @dawand
