@@ -16,7 +16,7 @@ class _CkbMaterialLocalizationsDelegate
   @override
   Future<WidgetsLocalizations> load(Locale locale) async {
     const String localeName = "ckb";
-    await intl.initializeDateFormatting(localeName, null);
+    await intl.initializeDateFormatting(localeName);
     return SynchronousFuture<WidgetsLocalizations>(
       CkbWidgetLocalizations(),
     );
