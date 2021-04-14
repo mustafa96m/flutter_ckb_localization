@@ -1,13 +1,10 @@
 import 'dart:async';
 
 import 'package:flutter/widgets.dart';
-import 'package:intl/intl.dart' as intl;
-import 'package:intl/date_symbol_data_local.dart' as intl;
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
-class _CkbMaterialLocalizationsDelegate
-    extends LocalizationsDelegate<WidgetsLocalizations> {
+class _CkbMaterialLocalizationsDelegate extends LocalizationsDelegate<WidgetsLocalizations> {
   const _CkbMaterialLocalizationsDelegate();
 
   @override
@@ -15,8 +12,7 @@ class _CkbMaterialLocalizationsDelegate
 
   @override
   Future<WidgetsLocalizations> load(Locale locale) async {
-    const String localeName = "ckb";
-    await intl.initializeDateFormatting(localeName);
+    
     return SynchronousFuture<WidgetsLocalizations>(
       CkbWidgetLocalizations(),
     );
@@ -27,8 +23,7 @@ class _CkbMaterialLocalizationsDelegate
 }
 
 class CkbWidgetLocalizations extends WidgetsLocalizations {
-  static const LocalizationsDelegate<WidgetsLocalizations> delegate =
-      _CkbMaterialLocalizationsDelegate();
+  static const LocalizationsDelegate<WidgetsLocalizations> delegate = _CkbMaterialLocalizationsDelegate();
 
   @override
   TextDirection get textDirection => TextDirection.rtl;
