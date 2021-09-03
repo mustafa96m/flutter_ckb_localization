@@ -2,11 +2,11 @@ import 'dart:async';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart' as intl;
-import 'package:intl/date_symbol_data_local.dart' as intl;
+import 'package:intl/date_symbols.dart' as intl;
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:intl/date_symbol_data_custom.dart' as date_symbol_data_custom;
 
-class _CkbMaterialLocalizationsDelegate
-    extends LocalizationsDelegate<MaterialLocalizations> {
+class _CkbMaterialLocalizationsDelegate extends LocalizationsDelegate<MaterialLocalizations> {
   const _CkbMaterialLocalizationsDelegate();
 
   @override
@@ -14,18 +14,30 @@ class _CkbMaterialLocalizationsDelegate
 
   @override
   Future<MaterialLocalizations> load(Locale locale) async {
+    const String localeName = 'ckb';
+
+    date_symbol_data_custom.initializeDateFormattingCustom(
+      locale: localeName,
+      patterns: ckbLocaleDatePatterns,
+      symbols: intl.DateSymbols.deserializeFromMap(ckbDateSymbols),
+    );
     return SynchronousFuture<MaterialLocalizations>(
       CkbMaterialLocalizations(
-        localeName: "ckb",
-        fullYearFormat: intl.DateFormat('y'),
-        shortDateFormat: intl.DateFormat('MM/DD/YY'),
-        compactDateFormat: intl.DateFormat('EEE, MMM d'),
-        shortMonthDayFormat: intl.DateFormat('MM/DD'),
-        mediumDateFormat: intl.DateFormat('EEE, MMM d'),
-        longDateFormat: intl.DateFormat('EEEE, MMMM d, y'),
-        yearMonthFormat: intl.DateFormat('MMMM y'),
-        decimalFormat: intl.NumberFormat('#,##0.###'),
-        twoDigitZeroPaddedFormat: intl.NumberFormat('00'),
+        fullYearFormat: intl.DateFormat('y', localeName),
+        shortDateFormat: intl.DateFormat('MM/DD/YY', localeName),
+        compactDateFormat: intl.DateFormat('EEE, MMM d', localeName),
+        shortMonthDayFormat: intl.DateFormat('MM/DD', localeName),
+        mediumDateFormat: intl.DateFormat('EEE, MMM d', localeName),
+        longDateFormat: intl.DateFormat('EEEE, MMMM d, y', localeName),
+        yearMonthFormat: intl.DateFormat('MMMM y', localeName),
+        // The `intl` library's NumberFormat class is generated from CLDR data
+        // (see https://github.com/dart-lang/intl/blob/master/lib/number_symbols_data.dart).
+        // Unfortunately, there is no way to use a locale that isn't defined in
+        // this map and the only way to work around this is to use a listed
+        // locale's NumberFormat symbols. So, here we use the number formats
+        // for 'ar' instead.
+        decimalFormat: intl.NumberFormat('#,##0.###', 'ar'),
+        twoDigitZeroPaddedFormat: intl.NumberFormat('00', 'ar'),
       ),
     );
   }
@@ -37,15 +49,15 @@ class _CkbMaterialLocalizationsDelegate
 class CkbMaterialLocalizations extends GlobalMaterialLocalizations {
   const CkbMaterialLocalizations({
     String localeName = 'ckb',
-    @required intl.DateFormat fullYearFormat,
-    @required intl.DateFormat shortDateFormat,
-    @required intl.DateFormat compactDateFormat,
-    @required intl.DateFormat shortMonthDayFormat,
-    @required intl.DateFormat mediumDateFormat,
-    @required intl.DateFormat longDateFormat,
-    @required intl.DateFormat yearMonthFormat,
-    @required intl.NumberFormat decimalFormat,
-    @required intl.NumberFormat twoDigitZeroPaddedFormat,
+    required intl.DateFormat fullYearFormat,
+    required intl.DateFormat shortDateFormat,
+    required intl.DateFormat compactDateFormat,
+    required intl.DateFormat shortMonthDayFormat,
+    required intl.DateFormat mediumDateFormat,
+    required intl.DateFormat longDateFormat,
+    required intl.DateFormat yearMonthFormat,
+    required intl.NumberFormat decimalFormat,
+    required intl.NumberFormat twoDigitZeroPaddedFormat,
   }) : super(
             localeName: localeName,
             shortDateFormat: shortDateFormat,
@@ -57,8 +69,7 @@ class CkbMaterialLocalizations extends GlobalMaterialLocalizations {
             yearMonthFormat: yearMonthFormat,
             decimalFormat: decimalFormat,
             twoDigitZeroPaddedFormat: twoDigitZeroPaddedFormat);
-  static const LocalizationsDelegate<MaterialLocalizations> delegate =
-      _CkbMaterialLocalizationsDelegate();
+  static const LocalizationsDelegate<MaterialLocalizations> delegate = _CkbMaterialLocalizationsDelegate();
 
   @override
   String get aboutListTileTitleRaw => 'دەربارەی \$applicationName';
@@ -67,7 +78,7 @@ class CkbMaterialLocalizations extends GlobalMaterialLocalizations {
   String get alertDialogLabel => 'ئاگادارکردنەوە';
 
   @override
-  String get anteMeridiemAbbreviation => 'AM';
+  String get anteMeridiemAbbreviation => 'پ.ن';
 
   @override
   String get backButtonTooltip => 'دواوە';
@@ -118,8 +129,7 @@ class CkbMaterialLocalizations extends GlobalMaterialLocalizations {
   String get dateRangePickerHelpText => 'دەست نیشانکردنی مەودا';
 
   @override
-  String get dateRangeStartDateSemanticLabelRaw =>
-      'بەرواری دەستپێکردن \$fullDate';
+  String get dateRangeStartDateSemanticLabelRaw => 'بەرواری دەستپێکردن \$fullDate';
 
   @override
   String get dateRangeStartLabel => 'بەرواری دەستپێکردن';
@@ -194,8 +204,7 @@ class CkbMaterialLocalizations extends GlobalMaterialLocalizations {
   String get pageRowsInfoTitleRaw => '\$firstRow–\$lastRow لە \$rowCount';
 
   @override
-  String get pageRowsInfoTitleApproximateRaw =>
-      '\$firstRow–\$lastRow تا \$rowCount';
+  String get pageRowsInfoTitleApproximateRaw => '\$firstRow–\$lastRow تا \$rowCount';
 
   @override
   String get pasteButtonLabel => 'پەیست';
@@ -204,7 +213,7 @@ class CkbMaterialLocalizations extends GlobalMaterialLocalizations {
   String get popupMenuLabel => 'لیستی دەرکەوتە';
 
   @override
-  String get postMeridiemAbbreviation => 'PM';
+  String get postMeridiemAbbreviation => 'د.ن';
 
   @override
   String get previousMonthTooltip => 'مانگی پێشوو';
@@ -216,20 +225,22 @@ class CkbMaterialLocalizations extends GlobalMaterialLocalizations {
   String get refreshIndicatorSemanticLabel => 'نوێکردنەوە';
 
   @override
-  String get remainingTextFieldCharacterCountFew => null;
+  String? get remainingTextFieldCharacterCountFew => null;
 
   @override
-  String get remainingTextFieldCharacterCountMany => null;
+  List<String> get narrowWeekdays => ['ی', 'د', 'س', 'چ', 'پ', 'ه', 'ش'];
+
+  @override
+  String? get remainingTextFieldCharacterCountMany => null;
 
   @override
   String get remainingTextFieldCharacterCountOne => '١ پیت ماوە';
 
   @override
-  String get remainingTextFieldCharacterCountOther =>
-      '\$remainingCount پیتەکان ماون';
+  String get remainingTextFieldCharacterCountOther => '\$remainingCount پیتەکان ماون';
 
   @override
-  String get remainingTextFieldCharacterCountTwo => null;
+  String? get remainingTextFieldCharacterCountTwo => null;
 
   @override
   String get remainingTextFieldCharacterCountZero => 'هیچ پیتێک نەماوەتەوە';
@@ -271,10 +282,10 @@ class CkbMaterialLocalizations extends GlobalMaterialLocalizations {
   String get selectYearSemanticsLabel => 'ساڵ هەڵبژێرە';
 
   @override
-  String get selectedRowCountTitleFew => null;
+  String? get selectedRowCountTitleFew => null;
 
   @override
-  String get selectedRowCountTitleMany => null;
+  String? get selectedRowCountTitleMany => null;
 
   @override
   String get selectedRowCountTitleOne => '١ دانە هەڵبژێردرا';
@@ -283,7 +294,7 @@ class CkbMaterialLocalizations extends GlobalMaterialLocalizations {
   String get selectedRowCountTitleOther => '\$selectedRowCount هەڵبژێردراو';
 
   @override
-  String get selectedRowCountTitleTwo => null;
+  String? get selectedRowCountTitleTwo => null;
 
   @override
   String get selectedRowCountTitleZero => 'هیچ هەڵنەبژێراوە';
@@ -330,3 +341,145 @@ class CkbMaterialLocalizations extends GlobalMaterialLocalizations {
   @override
   String get viewLicensesButtonLabel => 'پیشاندانی مۆڵەتەکان';
 }
+
+const ckbDateSymbols = {
+  'NAME': 'ckb',
+  'ERAS': ['پ.ز', 'ز'],
+  'ERANAMES': ['پێش زاینی', 'زاینی'],
+  'NARROWMONTHS': ['ک.د', 'ش', 'ز', 'ن', 'م', 'ح', 'ت', 'ئ', 'ل', 'ت.ی', 'ت.د', 'ک.ی'],
+  'STANDALONENARROWMONTHS': ['ک.د', 'ش', 'ز', 'ن', 'م', 'ح', 'ت', 'ئ', 'ل', 'ت.ی', 'ت.د', 'ک.ی'],
+  'MONTHS': [
+    'کانونی دووەم',
+    'شوبات',
+    'ئازار',
+    'نیسان',
+    'مایس',
+    'حوزەیران',
+    'تەمموز',
+    'ئاب',
+    'ئەیلوول',
+    'تشرینی یەکەم',
+    'تشرینی دووەم',
+    'کانونی یەکەم',
+  ],
+  'STANDALONEMONTHS': [
+    'کانونی دووەم',
+    'شوبات',
+    'ئازار',
+    'نیسان',
+    'مایس',
+    'حوزەیران',
+    'تەمموز',
+    'ئاب',
+    'ئەیلوول',
+    'تشرینی یەکەم',
+    'تشرینی دووەم',
+    'کانونی یەکەم',
+  ],
+  'SHORTMONTHS': [
+    'کانونی دووەم',
+    'شوبات',
+    'ئازار',
+    'نیسان',
+    'مایس',
+    'حوزەیران',
+    'تەمموز',
+    'ئاب',
+    'ئەیلوول',
+    'تشرینی یەکەم',
+    'تشرینی دووەم',
+    'کانونی یەکەم',
+  ],
+  'STANDALONESHORTMONTHS': [
+    'کانونی دووەم',
+    'شوبات',
+    'ئازار',
+    'نیسان',
+    'مایس',
+    'حوزەیران',
+    'تەمموز',
+    'ئاب',
+    'ئەیلوول',
+    'تشرینی یەکەم',
+    'تشرینی دووەم',
+    'کانونی یەکەم',
+  ],
+  'WEEKDAYS': ['یەکشەممە', 'دووشەممە', 'سێشەممە', 'چوارشەممە', 'پێنجشەممە', 'هەینی', 'شەممە'],
+  'STANDALONEWEEKDAYS': ['یەکشەممە', 'دووشەممە', 'سێشەممە', 'چوارشەممە', 'پێنجشەممە', 'هەینی', 'شەممە'],
+  'SHORTWEEKDAYS': ['یەکشەم', 'دووشەم', 'سێشەم', 'چوارشەم', 'پێنجشەم', 'هەینی', 'شەممە'],
+  'STANDALONESHORTWEEKDAYS': ['یەکشەم', 'دووشەم', 'سێشەم', 'چوارشەم', 'پێنجشەم', 'هەینی', 'شەممە'],
+  'NARROWWEEKDAYS': ['ی', 'د', 'س', 'چ', 'پ', 'ه', 'ش'],
+  'STANDALONENARROWWEEKDAYS': ['ی', 'د', 'س', 'چ', 'پ', 'ه', 'ش'],
+  'SHORTQUARTERS': ['چ١', 'چ٢', 'چ٣', 'چ٤'],
+  'QUARTERS': ['چارەکی یەکەم', 'چارەکی دووەم', 'چارەکی سێیەم', 'چارەکی چوارەم'],
+  'AMPMS': ['پ.ن', 'د.ن'],
+  'DATEFORMATS': [
+    'EEEE، d MMMM y',
+    'd MMMM y',
+    'dd‏/MM‏/y',
+    'd‏/M‏/y',
+  ],
+  'TIMEFORMATS': [
+    'h:mm:ss a zzzz',
+    'h:mm:ss a z',
+    'h:mm:ss a',
+    'h:mm a',
+  ],
+  'AVAILABLEFORMATS': null,
+  'DATETIMEFORMATS': [
+    '{1} {0}',
+    '{1} {0}',
+    '{1} {0}',
+    '{1} {0}',
+  ],
+  'ZERODIGIT': '٠',
+  'FIRSTDAYOFWEEK': 5,
+  'WEEKENDRANGE': [4, 5],
+  'FIRSTWEEKCUTOFFDAY': 3
+};
+const ckbLocaleDatePatterns = {
+  'd': 'd', // DAY
+  'E': 'ccc', // ABBR_WEEKDAY
+  'EEEE': 'cccc', // WEEKDAY
+  'LLL': 'LLL', // ABBR_STANDALONE_MONTH
+  'LLLL': 'LLLL', // STANDALONE_MONTH
+  'M': 'L', // NUM_MONTH
+  'Md': 'd/‏M', // NUM_MONTH_DAY
+  'MEd': 'EEE، d/M', // NUM_MONTH_WEEKDAY_DAY
+  'MMM': 'LLL', // ABBR_MONTH
+  'MMMd': 'd MMM', // ABBR_MONTH_DAY
+  'MMMEd': 'EEE، d MMM', // ABBR_MONTH_WEEKDAY_DAY
+  'MMMM': 'LLLL', // MONTH
+  'MMMMd': 'd MMMM', // MONTH_DAY
+  'MMMMEEEEd': 'EEEE، d MMMM', // MONTH_WEEKDAY_DAY
+  'QQQ': 'QQQ', // ABBR_QUARTER
+  'QQQQ': 'QQQQ', // QUARTER
+  'y': 'y', // YEAR
+  'yM': 'M‏/y', // YEAR_NUM_MONTH
+  'yMd': 'd‏/M‏/y', // YEAR_NUM_MONTH_DAY
+  'yMEd': 'EEE، d/‏M/‏y', // YEAR_NUM_MONTH_WEEKDAY_DAY
+  'yMMM': 'MMM y', // YEAR_ABBR_MONTH
+  'yMMMd': 'd MMM y', // YEAR_ABBR_MONTH_DAY
+  'yMMMEd': 'EEE، d MMM y', // YEAR_ABBR_MONTH_WEEKDAY_DAY
+  'yMMMM': 'MMMM y', // YEAR_MONTH
+  'yMMMMd': 'd MMMM y', // YEAR_MONTH_DAY
+  'yMMMMEEEEd': 'EEEE، d MMMM y', // YEAR_MONTH_WEEKDAY_DAY
+  'yQQQ': 'QQQ y', // YEAR_ABBR_QUARTER
+  'yQQQQ': 'QQQQ y', // YEAR_QUARTER
+  'H': 'HH', // HOUR24
+  'Hm': 'HH:mm', // HOUR24_MINUTE
+  'Hms': 'HH:mm:ss', // HOUR24_MINUTE_SECOND
+  'j': 'h a', // HOUR
+  'jm': 'h:mm a', // HOUR_MINUTE
+  'jms': 'h:mm:ss a', // HOUR_MINUTE_SECOND
+  'jmv': 'h:mm a v', // HOUR_MINUTE_GENERIC_TZ
+  'jmz': 'h:mm a z', // HOUR_MINUTETZ
+  'jz': 'h a z', // HOURGENERIC_TZ
+  'm': 'm', // MINUTE
+  'ms': 'mm:ss', // MINUTE_SECOND
+  's': 's', // SECOND
+  'v': 'v', // ABBR_GENERIC_TZ
+  'z': 'z', // ABBR_SPECIFIC_TZ
+  'zzzz': 'zzzz', // SPECIFIC_TZ
+  'ZZZZ': 'ZZZZ' // ABBR_UTC_TZ
+};
